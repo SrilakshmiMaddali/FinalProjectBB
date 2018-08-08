@@ -1,29 +1,25 @@
-package sm.com.finalproject;
+package sm.com.JockerDisplay;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-import sm.com.JockerDisplay.JokeDisplay;
-import sm.com.jocker.MyJocker;
-
-public class MainActivity extends AppCompatActivity {
+public class JokeDisplay extends AppCompatActivity {
+    public static String JOKE_KEY = "Joke key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_joke);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_joke, menu);
         return true;
     }
 
@@ -40,14 +36,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
-        MyJocker jocker = new MyJocker();
-        String joke = jocker.getJoke();
-        Intent intent = new Intent(this, JokeDisplay.class);
-        intent.putExtra("Joke key", joke);
-        startActivity(intent);
     }
 }
